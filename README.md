@@ -1,4 +1,4 @@
-# Arduino TinyWire Slave Library
+# Arduino TinyWire Library
 
 Originals from <http://www.arduino.cc/playground/Code/USIi2c>
 
