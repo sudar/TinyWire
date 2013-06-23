@@ -1,45 +1,61 @@
-/* ATtiny85 as an I2C Master  Ex1          BroHogan                      1/21/11
- * I2C master reading DS1621 temperature sensor. (display with leds)
+/* ATtiny85 as an I2C Master   Ex2        BroHogan                           1/21/11
+ * I2C master reading DS1621 temperature sensor. Display to I2C GPIO LED.
  * SETUP:
- * ATtiny Pin 1 = (RESET) N/U                      ATtiny Pin 2 = (D3) LED3
+ * ATtiny Pin 1 = (RESET) N/U                      ATtiny Pin 2 = (D3) N/U
  * ATtiny Pin 3 = (D4) to LED1                     ATtiny Pin 4 = GND
- * ATtiny Pin 5 = SDA on DS1621                    ATtiny Pin 6 = (D1) to LED2
- * ATtiny Pin 7 = SCK on DS1621                    ATtiny Pin 8 = VCC (2.7-5.5V)
+ * ATtiny Pin 5 = SDA on DS1621  & GPIO            ATtiny Pin 6 = (D1) to LED2
+ * ATtiny Pin 7 = SCK on DS1621  & GPIO            ATtiny Pin 8 = VCC (2.7-5.5V)
  * NOTE! - It's very important to use pullups on the SDA & SCL lines!
  * DS1621 wired per data sheet. This ex assumes A0-A2 are set LOW for an addeess of 0x48
- * TinyWireM USAGE & CREDITS: - see TinyWireM.h
- * NOTES:
- * The ATtiny85 + DS1621 draws 1.7mA @5V when leds are not on and not reading temp.
- * Using sleep mode, they draw .2 @5V @ idle - see http://brownsofa.org/blog/archives/261
+ * PCA8574A GPIO was used wired per instructions in "info" folder in the LiquidCrystal_I2C lib.
+ * This ex assumes A0-A2 are set HIGH for an addeess of 0x3F
+ * LiquidCrystal_I2C lib was modified for ATtiny - on Playground with TinyWireM lib.
+ * TinyWireM USAGE & CREDITS: - see TinyWireMaster.h
  */
 
-#include <TinyWireM.h>                  // I2C Master lib for ATTinys which use USI
+//#define DEBUG
+#include <TinyWireMaster.h>             // I2C Master lib for ATTinys which use USI
+#include <LiquidCrystal_I2C.h>          // for LCD w/ GPIO MODIFIED for the ATtiny85
 
+#define GPIO_ADDR     0x3F              // (PCA8574A A0-A2 @5V) typ. A0-A3 Gnd 0x20 / 0x38 for A
 #define DS1621_ADDR   0x48              // 7 bit I2C address for DS1621 temperature sensor
 #define LED1_PIN         4              // ATtiny Pin 3
 #define LED2_PIN         1              // ATtiny Pin 6
-#define LED3_PIN         3              // ATtiny Pin 2
 
 int tempC = 0;                          // holds temp in C
 int tempF = 0;                          // holds temp in F
 
+LiquidCrystal_I2C lcd(GPIO_ADDR,16,2);  // set address & 16 chars / 2 lines
+
 
 void setup(){
+#ifdef DEBUG
   pinMode(LED1_PIN,OUTPUT);
   pinMode(LED2_PIN,OUTPUT);
-  pinMode(LED3_PIN,OUTPUT);
   Blink(LED1_PIN,2);                    // show it's alive
+#endif
   TinyWireM.begin();                    // initialize I2C lib
   Init_Temp();                          // Setup DS1621
-  delay (3000);
+  lcd.init();                           // initialize the lcd 
+  lcd.backlight();                      // Print a message to the LCD.
+  lcd.print("Hello, Temp!");
+  delay (2000);
 }
 
 
 void loop(){
-  Get_Temp();
+  Get_Temp();                           // read current temperature
+  lcd.clear();                          // display it
+  lcd.print("C: ");
+  lcd.print(tempC,DEC);
+  lcd.setCursor(7,0);
+  lcd.print("F: ");
+  lcd.print(tempF,DEC);
+#ifdef DEBUG
   Blink(LED1_PIN,tempC/10);             // blink 10's of temperature on LED 1
   delay (1000);
   Blink(LED2_PIN,tempC%10);             // blink 1's of temperature on LED 2
+#endif
   delay (4000);                         // wait a few sec before next reading
 }
 
@@ -67,6 +83,7 @@ void Get_Temp(){  // Get the temperature from a DS1621
 }
 
 
+#ifdef DEBUG
 void Blink(byte led, byte times){ // poor man's GUI
   for (byte i=0; i< times; i++){
     digitalWrite(led,HIGH);
@@ -75,4 +92,5 @@ void Blink(byte led, byte times){ // poor man's GUI
     delay (175);
   }
 }
+#endif
 

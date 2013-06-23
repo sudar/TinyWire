@@ -15,7 +15,7 @@
  */
 
 //#define DEBUG
-#include <TinyWireM.h>                  // I2C Master lib for ATTinys which use USI
+#include <TinyWireMaster.h>             // I2C Master lib for ATTinys which use USI
 #include <LiquidCrystal_I2C.h>          // for LCD w/ GPIO MODIFIED for the ATtiny85
 
 #define GPIO_ADDR     0x3F              // (PCA8574A A0-A2 @5V) typ. A0-A3 Gnd 0x20 / 0x38 for A
