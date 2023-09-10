@@ -11,7 +11,7 @@
  * PCA8574A GPIO was used wired per instructions in "info" folder in the LiquidCrystal_I2C lib.
  * This ex assumes A0-A2 are set HIGH for an addeess of 0x3F
  * LiquidCrystal_I2C lib was modified for ATtiny - on Playground with TinyWireM lib.
- * TinyWireM USAGE & CREDITS: - see TinyWireM.h
+ * TinyWireM USAGE & CREDITS: - see TinyWireMaster.h
  */
 
 //#define DEBUG

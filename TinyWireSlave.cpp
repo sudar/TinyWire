@@ -3,7 +3,7 @@
   Provides TWI/I2C Slave functionality on ATtiny processers in Arduino environment.
   1/23/2011 BroHogan -  brohoganx10 at gmail dot com
 
-  **** See TinyWireS.h for Credits and Usage information ****
+  **** See TinyWireSlave.h for Credits and Usage information ****
 
   This library is free software; you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
@@ -19,7 +19,7 @@ extern "C" {
   #include <avr/interrupt.h>
   }
 
-#include "TinyWireS.h"
+#include "TinyWireSlave.h"
 #include "Arduino.h"
 
 // Constructors ////////////////////////////////////////////////////////////////

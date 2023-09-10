@@ -1,5 +1,5 @@
 /*
-  TinyWireS.h - a wrapper class for Don Blake's usiTwiSlave routines.
+  TinyWireSlave.h - a wrapper class for Don Blake's usiTwiSlave routines.
   Provides TWI/I2C Slave functionality on ATtiny processers in Arduino environment.
   1/23/2011 BroHogan -  brohoganx10 at gmail dot com
 
@@ -33,8 +33,8 @@
   PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 */
 
-#ifndef TinyWireS_h
-#define TinyWireS_h
+#ifndef TinyWireSlave.h
+#define TinyWireSlave.h
 
 #include <inttypes.h>
 

@@ -23,7 +23,7 @@
 #define F_CPU 1000000UL	      // Sets up the default speed for delay.h
 #include <util/delay.h>
 #include <avr/io.h>
-#include "USI_TWI_Master.h"
+#include "usiTwiMaster.h"
 
 unsigned char USI_TWI_Start_Transceiver_With_Data( unsigned char * , unsigned char );
 unsigned char USI_TWI_Master_Transfer( unsigned char );
@@ -78,7 +78,7 @@ unsigned char USI_TWI_Get_State_Info( void )
  The msgSize is passed to USI_TWI_Start_Transceiver_With_Data.
  
  Success or error code is returned. Error codes are defined in 
- USI_TWI_Master.h
+ usiTwiMaster.h
 ---------------------------------------------------------------*/
 unsigned char USI_TWI_Start_Random_Read( unsigned char *msg, unsigned char msgSize)
 {
@@ -98,7 +98,7 @@ unsigned char USI_TWI_Start_Random_Read( unsigned char *msg, unsigned char msgSi
  R/W, Reads/Writes Data, and verifies/sends ACK.
  
  Success or error code is returned. Error codes are defined in 
- USI_TWI_Master.h
+ usiTwiMaster.h
 ---------------------------------------------------------------*/
 unsigned char USI_TWI_Start_Read_Write( unsigned char *msg, unsigned char msgSize)
 {
@@ -125,7 +125,7 @@ unsigned char USI_TWI_Start_Read_Write( unsigned char *msg, unsigned char msgSiz
  the slave address again and reading the data.
  
  Success or error code is returned. Error codes are defined in 
- USI_TWI_Master.h
+ usiTwiMaster.h
 ---------------------------------------------------------------*/
 unsigned char USI_TWI_Start_Transceiver_With_Data( unsigned char *msg, unsigned char msgSize)
 {
