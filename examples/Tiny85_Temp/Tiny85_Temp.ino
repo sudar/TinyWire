@@ -7,7 +7,7 @@
  * ATtiny Pin 7 = SCK on DS1621                    ATtiny Pin 8 = VCC (2.7-5.5V)
  * NOTE! - It's very important to use pullups on the SDA & SCL lines!
  * DS1621 wired per data sheet. This ex assumes A0-A2 are set LOW for an addeess of 0x48
- * TinyWireM USAGE & CREDITS: - see TinyWireM.h
+ * TinyWireM USAGE & CREDITS: - see TinyWireMaster.h
  * NOTES:
  * The ATtiny85 + DS1621 draws 1.7mA @5V when leds are not on and not reading temp.
  * Using sleep mode, they draw .2 @5V @ idle - see http://brownsofa.org/blog/archives/261
