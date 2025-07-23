@@ -2,7 +2,7 @@
    TinyWireM.cpp - a wrapper class for TWI/I2C Master library for the ATtiny on Arduino
   1/21/2011 BroHogan -  brohoganx10 at gmail dot com
 
-  **** See TinyWireM.h for Credits and Usage information ****
+  **** See TinyWireMaster.h for Credits and Usage information ****
 
   This library is free software; you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
@@ -14,14 +14,14 @@
 */
 
 extern "C" {
-  //#include "USI_TWI_Master.h"
-  //#include <USI_TWI_Master.h>
-  //#include <USI_TWI_Master\USI_TWI_Master.h>
-  //#include <USI_TWI_Master/USI_TWI_Master.h>
+  //#include "usiTwiMaster.h"
+  //#include <usiTwiMaster.h>
+  //#include <USI_TWI_Master\usiTwiMaster.h>
+  //#include <USI_TWI_Master/usiTwiMaster.h>
 }
 
-#include "USI_TWI_Master.h"
-#include "TinyWireM.h"
+#include "usiTwiMaster.h"
+#include "TinyWireMaster.h"
 
 
 // Initialize Class Variables //////////////////////////////////////////////////

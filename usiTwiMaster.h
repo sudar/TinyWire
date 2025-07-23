@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 *
-* File              USI_TWI_Master.h compiled with gcc
+* File              usiTwiMaster.h compiled with gcc
 * Date              Friday, 10/31/08		Boo!
 * Updated by        jkl
 *
